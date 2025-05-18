@@ -62,7 +62,7 @@ void initQuestions() {
    addEasyQuestion("How can virtual and augmented reality content enhance user experience?\n 1. It can be really distracting and confusing for users.\n 2. It is only suitable for gaming and entertainment purposes\n 3. It is limited to expensive and high-end devices, making it inaccessible for most users\n 4. It can enhance user experience by providing immersive and interactive experiences that blend digital elements with the real world.","4");
    addEasyQuestion("Is it important to analyze audience feedback and comments to identify areas for improvement and refinement in content?\n1. It is not relevant or necessary. \n2. Yes, it is essential to identify areas improvement and refinement in content.\n 3. Only feedback from friends and family should be considered.\n 4. One should rely only on intuition and personal preferences to determine conetnt improvements.","2");
    addEasyQuestion("Is regularly updating digital content with the latest data, statistics, and industry trends to keep it relevant and valuable?\n 1. No, it is a time-consuming process.\n 2. Yes, regularly updating digital content is crucial to keep it relevant and valuable.\n 3. It shouldn't be a priority, as it doesn't affect its value.\n 4. Outdated information is easier to find and use. ","2");
-   addEsyQuestion("Why is it important to explore a diverse range of sources, such as articles, data, images, and videos, when gathering content for creating new and original digital content?\n 1. It helps increase the word count an dlenght of the content.\n 2. It allows the use of the same conent repeatedly for different projects, saving time and effort.\n 3. It is unnecessary and may lead to confusion and inconsistencies in the content. \n 4. It provides a varienty of perspectives and insights for a more comprehensive and unique content creation.","4");
+   addEasyQuestion("Why is it important to explore a diverse range of sources, such as articles, data, images, and videos, when gathering content for creating new and original digital content?\n 1. It helps increase the word count an dlenght of the content.\n 2. It allows the use of the same conent repeatedly for different projects, saving time and effort.\n 3. It is unnecessary and may lead to confusion and inconsistencies in the content. \n 4. It provides a varienty of perspectives and insights for a more comprehensive and unique content creation.","4");
    addEasyQuestion("How do multimedia elements, such as images, videos, and infographics, enhance the visual appeal of digital content?\n 1. They encrease word count and lenght of the content, making it more comprehensive.\n 2. They distract the audience from the main message of the content, making it harder to understand.\n 3. They are unnecessary and do not impact the visual appeal.\n 4. They enhance visual appeal if digital content by captivating the audience's attention and making the conetnt more visually appealing and engaging.","4");
    addEasyQuestion("What is the purpose of incorporating interactive elements, such as quizzes, or calls-on-action, in digital content?\n1. They overwhelm the audience with too much information, leading to disengagement\n 2 .They make the content more complicated and challeging to understand, discouraging audience interaction.\n 3. They create a more engaging and participative experience, encouraging audience interaction and feedback.\n 4. They have no impact on audience engagement and participation.","3");
    addEasyQuestion("What is GPT-3 primarly used for in content creation? \n 1. creating databases\n 2. generating text\n 3. developing mobile apps\n 4.composing music","2");
@@ -135,6 +135,22 @@ void showRandomHardQuestion() {
     }
 }
 
+void showRandomQuestion() {
+    int total = easyCount + hardCount;
+    if (total == 0) {
+        printf("Nu există întrebări disponibile.\n");
+        return;
+    }
+
+    int choice = rand() % total;
+
+    if (choice < easyCount) {
+        showRandomEasyQuestion();
+    } else {
+        showRandomHardQuestion();
+    }
+}
+
 int checkAnswer(int userAnswer) {
     if (!currentQuestion) return 0;
 
@@ -169,19 +185,5 @@ void freeQuestions() {
     currentQuestion = NULL;
 }
 
-void showRandomQuestion() {
-    int total = easyCount + hardCount;
-    if (total == 0) {
-        printf("Nu există întrebări disponibile.\n");
-        return;
-    }
 
-    int choice = rand() % total;
-
-    if (choice < easyCount) {
-        showRandomEasyQuestion();
-    } else {
-        showRandomHardQuestion();
-    }
-}
 
